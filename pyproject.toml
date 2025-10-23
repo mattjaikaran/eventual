@@ -1,0 +1,50 @@
+[project]
+name = "eventual_backend"
+version = "0.1.0"
+description = "A backend service for managing tasks"
+dependencies = [
+    "fastapi==0.104.1",
+    "uvicorn==0.24.0",
+    "sqlalchemy==2.0.23",
+    "asyncpg==0.29.0",
+    "alembic==1.12.1",
+    "pydantic==2.5.0",
+    "pydantic-settings==2.1.0",
+    "python-dotenv==1.0.0",
+    "pytest==7.4.3",
+    "httpx==0.25.2",
+    "greenlet==3.0.3",
+    "email-validator==2.1.0",
+]
+
+[build-system]
+requires = ["flit_core>=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.uv]
+dev-dependencies = [
+    "ruff==0.1.6",
+    "pytest-asyncio==0.21.1",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by line-length
+    "B008",  # do not perform function calls in argument defaults
+]
+
+[tool.ruff.format]
+quote-style = "double"
